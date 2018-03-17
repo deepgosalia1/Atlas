@@ -7,6 +7,6 @@ public class SplashActivity extends AppCompatActivity {
 
     private int splash_timeout = 4000;
 
-    
+
 
 }
