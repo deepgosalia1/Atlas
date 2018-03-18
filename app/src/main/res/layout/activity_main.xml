@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main_t">
+    android:background="@drawable/background_main_t"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="0.3"
+        android:elevation="0dp"
+        android:onClick="generatePlace"
+        android:text="(Dont click if you are using editText to enter the place)First click me to generate a random place." />
+
+    <TextView
+        android:id="@+id/displayrandomplace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:layout_weight="0.3"
+        android:background="@android:color/darker_gray"
+        android:text="TextView"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/displayrandomplace"
+        android:layout_below="@+id/button3"
+        android:layout_marginTop="17dp"
+        android:layout_weight="0.3"
+        android:onClick="redirectToMaps"
+        android:text="Redirect To Maps with the random generated place" />
+
+    <EditText
+        android:id="@+id/enterplace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/displayrandomplace"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:ems="10"
+        android:hint="enter a place here "
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button4"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enterplace"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:onClick="submitplace"
+        android:text="submit the written place(press the redirect button now))" />
+</RelativeLayout>
