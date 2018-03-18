@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent=getIntent();
+        intent.getStringExtra("mode");
         display_random_place=(TextView)findViewById(R.id.displayrandomplace);
         enterplace=findViewById(R.id.enterplace);
         AssetManager assetManager = getAssets();

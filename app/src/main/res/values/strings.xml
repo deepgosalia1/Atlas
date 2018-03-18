@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Atlas</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="title_activity_rules">Activity_rules</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="names"><![CDATA[<p><h2>RULES : </h2></p>
+    <p>&#8226; In "Easy mode" only the Countries in world will be accepted. That is challenge will be based only on the basis of country names <br />
+    &#8226; In "Hard mode" the countries, states as well as the cities from all over the globe will be included in the challenge<br />
+    &#8226;choose one amongst these : </p>]]></string>
 </resources>

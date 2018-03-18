@@ -1,0 +1,46 @@
+package com.example.anonym.atlas;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Html;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class RulesActivity extends AppCompatActivity {
+    ImageView hardimage,easyimage;
+    TextView rules_list;
+
+    public void response_easy(View view){
+        Toast.makeText(this, "easy mode selected", Toast.LENGTH_SHORT).show();
+        Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+        easyimage.startAnimation(animFadein);
+        Intent intent=new Intent(RulesActivity.this,MainActivity.class);
+        intent.putExtra("mode","easy");
+        startActivity(intent);
+    }
+    public void response_hard(View view){
+        Toast.makeText(this, "hard mode selected", Toast.LENGTH_SHORT).show();
+        Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+        hardimage.startAnimation(animFadein);
+        Intent intent=new Intent(RulesActivity.this,MainActivity.class);
+        intent.putExtra("mode","hard");
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_rules);
+        Intent intent=getIntent();
+        hardimage=(ImageView)findViewById(R.id.hard_image);
+        easyimage=(ImageView)findViewById(R.id.easy_image);
+        rules_list=(TextView)findViewById(R.id.rules_list);
+        rules_list.setText(Html.fromHtml(getString(R.string.names)));
+
+    }
+}
