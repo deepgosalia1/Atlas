@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#000000"
     tools:context="com.example.anonym.atlas.SplashActivity">
 
-    <com.felipecsl.gifimageview.library.GifImageView
-        android:id="@+id/gifImageView"
-        android:layout_width="match_parent"
+    <VideoView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@android:color/background_dark"
-        android:scaleType="fitCenter" />
+        android:id="@+id/videoView"/>
 
 </RelativeLayout>

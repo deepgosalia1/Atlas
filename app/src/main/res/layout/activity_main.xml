@@ -6,58 +6,90 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/generate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_weight="0.3"
-        android:elevation="0dp"
+        android:layout_marginBottom="350dp"
         android:onClick="generatePlace"
-        android:text="(Dont click if you are using editText to enter the place)First click me to generate a random place." />
+        android:text="Generate Place"
+        android:visibility="invisible" />
 
     <TextView
-        android:id="@+id/displayrandomplace"
-        android:layout_width="match_parent"
+        android:id="@+id/comp_place"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="290dp"
+        android:layout_marginLeft="110dp"
         android:layout_weight="0.3"
-        android:background="@android:color/darker_gray"
-        android:text="TextView"
-        android:textAlignment="center" />
+        android:background="@android:color/darker_gray" />
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/computer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/displayrandomplace"
-        android:layout_below="@+id/button3"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="290dp"
+        android:layout_marginLeft="15dp"
+        android:text="Computer :"
+        android:textAlignment="center"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/user_place"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="160dp"
+        android:layout_marginLeft="110dp"
+        android:layout_weight="0.3"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="160dp"
+        android:layout_marginLeft="37dp"
+        android:text="User :"
+        android:textAlignment="center"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="220dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:layout_weight="0.3"
         android:onClick="redirectToMaps"
-        android:text="Redirect To Maps with the random generated place" />
+        android:text="Show Map" />
 
     <EditText
         android:id="@+id/enterplace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/displayrandomplace"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
         android:ems="10"
         android:hint="enter a place here "
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/submit"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/enterplace"
+        android:layout_width="90dp"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:onClick="submitplace"
-        android:text="submit the written place(press the redirect button now))" />
+        android:text="Submit" />
 </RelativeLayout>

@@ -25,8 +25,7 @@
         android:layout_marginStart="30dp"
         android:clickable="true"
         android:onClick="response_hard"
-        app:srcCompat="@drawable/hard_final"
-        style="?android:borderlessButtonStyle"/>
+        app:srcCompat="@drawable/hard_final"/>
 
     <ImageView
         android:id="@+id/easy_image"
@@ -37,8 +36,7 @@
         android:layout_marginEnd="24dp"
         android:clickable="true"
         android:onClick="response_easy"
-        app:srcCompat="@drawable/easy_final"
-        style="?android:borderlessButtonStyle"/>
+        app:srcCompat="@drawable/easy_final"/>
 
     <TextView
         android:id="@+id/rules_list"

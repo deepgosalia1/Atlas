@@ -1,46 +1,44 @@
 package com.example.anonym.atlas;
 
+
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
+import android.widget.VideoView;
 
-import com.felipecsl.gifimageview.library.GifImageView;
 
-import org.apache.commons.io.IOUtils;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private int splash_timeout = 4000;
-    private GifImageView gifImageView;
+    VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_splash);
 
-        gifImageView=(GifImageView)findViewById(R.id.gifImageView);
 
-        try{
-            InputStream inputStream= getAssets().open("splashscreen.gif");
-            byte[] bytes= IOUtils.toByteArray(inputStream);
-            gifImageView.setBytes(bytes);
-            gifImageView.startAnimation();
-        }
-        catch (IOException e){
-            Toast.makeText(this, "Sorry some error occured while loading the screen.", Toast.LENGTH_SHORT).show();
-        }
-
-        new Handler().postDelayed(new Runnable() {
+        videoView = (VideoView)findViewById(R.id.videoView);
+        Uri video = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim);
+        videoView.setVideoURI(video);
+        videoView.start();
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
-            public void run() {
-                SplashActivity.this.startActivity(new Intent(SplashActivity.this,RulesActivity.class));
-                SplashActivity.this.finish();
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                if(isFinishing())
+                    return;
+                startActivity(new Intent(SplashActivity.this,RulesActivity.class));
+                finish();
             }
-        },4000);
+        });
     }
 }
