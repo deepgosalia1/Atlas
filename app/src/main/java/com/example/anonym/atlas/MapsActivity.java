@@ -32,7 +32,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         Intent intent2 = getIntent();
         placerecieved = intent2.getStringExtra("trial");
-        Toast.makeText(this, placerecieved, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -48,6 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         Geocoder geocoder = new Geocoder(this);
         List<Address> addressList = null;
         try {
@@ -59,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (addressList != null && addressList.size() > 0) {
             double lat = (double) (addressList.get(0).getLatitude());
             double lng = (double) (addressList.get(0).getLongitude());
-            Toast.makeText(this, "lat is " + lat + " long is " + lng, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Latitude is " + lat + " Longitutde is " + lng, Toast.LENGTH_LONG).show();
             // Add a marker in the place recieved and move the camera
             LatLng placelocated = new LatLng(lat, lng);
             mMap.addMarker(new MarkerOptions().position(placelocated).title("Here is that place " + placerecieved));
