@@ -24,12 +24,12 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity{
 
-    private String IncomingPlace,randomselectedplace,placeEntered,final_place_to_be_passed;
+    private String IncomingPlace,placeEntered,final_place_to_be_passed;
     Random random=new Random();
     ArrayList<String> keys = new ArrayList<String>();
     LinkedHashMap<String,String> all_place = new LinkedHashMap<>(46354);
     LinkedHashMap<String,String> all_copy = new LinkedHashMap<>(46354);
-    TextView comp_place;
+    TextView comp_place,turn_indicator;
     TextView user_place;
     EditText enterplace;
     int firstuse=0;
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void computerturn(){
+        turn_indicator.setText("Computer's turn! and now your's");
         int flag=0;
         Character initial=null;
         String input;
@@ -154,21 +155,24 @@ public class MainActivity extends AppCompatActivity{
         enterplace.setText("");
         enterplace.setHint("Enter a place here");
         if (userTurn) {
+            turn_indicator.setText("Your turn!");
             new Handler().postDelayed(new Runnable() {
 
                 @Override
                 public void run() {
-                    Toast.makeText(MainActivity.this, "User Turn",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Your Turn",Toast.LENGTH_SHORT).show();
                 }
             }, 2000);
         } else {
+            turn_indicator.setText("Computer's turn! and now your's");
             new Handler().postDelayed(new Runnable() {
 
                 @Override
                 public void run() {
-                    Toast.makeText(MainActivity.this, "Computer Turn",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Computer's Turn",Toast.LENGTH_SHORT).show();
                 }
             }, 2000);
+
             computerturn();
         }
         return true;
@@ -178,23 +182,40 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent=getIntent();
-        comp_place=(TextView)findViewById(R.id.comp_place);
-        user_place=(TextView)findViewById(R.id.user_place);
-        enterplace=findViewById(R.id.enterplace);
+        Intent intent = getIntent();
+        String mode = intent.getStringExtra("mode");
+        comp_place = (TextView) findViewById(R.id.comp_place);
+        user_place = (TextView) findViewById(R.id.user_place);
+        turn_indicator = (TextView) findViewById(R.id.turn_indicator);
+        enterplace = findViewById(R.id.enterplace);
         AssetManager assetManager = getAssets();
-        try {
-            InputStream inputStream = assetManager.open("atlas.txt");
-            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-            String line = null;
-            while((line = in.readLine()) != null) {
-                IncomingPlace = line.trim();
-                all_place.put(IncomingPlace.toLowerCase(),IncomingPlace);
+        if (mode == "hard") {
+            try {
+                InputStream inputStream = assetManager.open("atlas.txt");
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+                String line = null;
+                while ((line = in.readLine()) != null) {
+                    IncomingPlace = line.trim();
+                    all_place.put(IncomingPlace.toLowerCase(), IncomingPlace);
+                }
+            } catch (IOException e) {
+                Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
             }
-        } catch (IOException e) {
-            Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
+            onStart(null);
+        }else{
+            try {
+                InputStream inputStream = assetManager.open("just_countries.txt");
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+                String line = null;
+                while ((line = in.readLine()) != null) {
+                    IncomingPlace = line.trim();
+                    all_place.put(IncomingPlace.toLowerCase(), IncomingPlace);
+                }
+            } catch (IOException e) {
+                Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
+            }
+            onStart(null);
         }
-        onStart(null);
     }
 }
 
