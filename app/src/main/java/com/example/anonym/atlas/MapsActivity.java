@@ -47,7 +47,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         Geocoder geocoder = new Geocoder(this);
         List<Address> addressList = null;
         try {
