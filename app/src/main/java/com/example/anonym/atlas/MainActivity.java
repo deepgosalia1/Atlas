@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
@@ -26,6 +25,8 @@ public class MainActivity extends AppCompatActivity{
 
     private String IncomingPlace,placeEntered,final_place_to_be_passed;
     Random random=new Random();
+    BufferedReader in;
+    InputStream inputStream;
     ArrayList<String> keys = new ArrayList<String>();
     LinkedHashMap<String,String> all_place = new LinkedHashMap<>(46354);
     LinkedHashMap<String,String> all_copy = new LinkedHashMap<>(46354);
@@ -183,39 +184,29 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        String mode = intent.getStringExtra("mode");
+        int mode = intent.getIntExtra("mode",0);
         comp_place = (TextView) findViewById(R.id.comp_place);
         user_place = (TextView) findViewById(R.id.user_place);
         turn_indicator = (TextView) findViewById(R.id.turn_indicator);
         enterplace = findViewById(R.id.enterplace);
+        Log.i("Mode : ",String.valueOf(mode));
         AssetManager assetManager = getAssets();
-        if (mode == "hard") {
-            try {
-                InputStream inputStream = assetManager.open("atlas.txt");
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-                String line = null;
-                while ((line = in.readLine()) != null) {
-                    IncomingPlace = line.trim();
-                    all_place.put(IncomingPlace.toLowerCase(), IncomingPlace);
-                }
-            } catch (IOException e) {
-                Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
+        try {
+            if (mode == 1)
+                inputStream = assetManager.open("atlas.txt");
+            else
+                inputStream = assetManager.open("just_countries.txt");
+            in = new BufferedReader(new InputStreamReader(inputStream));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                IncomingPlace = line.trim();
+                all_place.put(IncomingPlace.toLowerCase(), IncomingPlace);
             }
-            onStart(null);
-        }else{
-            try {
-                InputStream inputStream = assetManager.open("just_countries.txt");
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-                String line = null;
-                while ((line = in.readLine()) != null) {
-                    IncomingPlace = line.trim();
-                    all_place.put(IncomingPlace.toLowerCase(), IncomingPlace);
-                }
-            } catch (IOException e) {
-                Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
-            }
-            onStart(null);
+        } catch (IOException e) {
+            Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
         }
+        onStart(null);
     }
 }
+
 

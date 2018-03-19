@@ -20,7 +20,7 @@ public class RulesActivity extends AppCompatActivity {
         Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
         easyimage.startAnimation(animFadein);
         Intent intent=new Intent(RulesActivity.this,MainActivity.class);
-        intent.putExtra("mode","easy");
+        intent.putExtra("mode",0);
         startActivity(intent);
     }
     public void response_hard(View view){
@@ -28,7 +28,7 @@ public class RulesActivity extends AppCompatActivity {
         Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
         hardimage.startAnimation(animFadein);
         Intent intent=new Intent(RulesActivity.this,MainActivity.class);
-        intent.putExtra("mode","hard");
+        intent.putExtra("mode",1);
         startActivity(intent);
     }
 

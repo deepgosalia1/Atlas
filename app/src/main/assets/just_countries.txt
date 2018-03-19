@@ -1,19 +1,19 @@
 Afghanistan
 Albania
 Algeria
-American Samoa
+AmericanSamoa
 Andorra
 Angola
 Anguilla
 Antarctica
-Antigua And Barbuda
+AntiguaAndBarbuda
 Argentina
 Armenia
 Aruba
 Australia
 Austria
 Azerbaijan
-Bahamas The
+Bahamas
 Bahrain
 Bangladesh
 Barbados
@@ -24,58 +24,57 @@ Benin
 Bermuda
 Bhutan
 Bolivia
-Bosnia and Herzegovina
+BosniaandHerzegovina
 Botswana
-Bouvet Island
+BouvetIsland
 Brazil
-British Indian Ocean Territory
+BritishIndianOceanTerritory
 Brunei
 Bulgaria
-Burkina Faso
+BurkinaFaso
 Burundi
 Cambodia
 Cameroon
 Canada
-Cape Verde
-Cayman Islands
-Central African Republic
+CapeVerde
+CaymanIslands
+CentralAfricanRepublic
 Chad
 Chile
 China
-Christmas Island
-Cocos (Keeling) Islands
+ChristmasIsland
+CocosIslands
 Colombia
 Comoros
 Congo
-Congo The Democratic Republic Of The
-Cook Islands
-Costa Rica
-Cote D''Ivoire (Ivory Coast)
-Croatia (Hrvatska)
+CookIslands
+CostaRica
+IvoryCoast
+Croatia(Hrvatska)
 Cuba
 Cyprus
-Czech Republic
+CzechRepublic
 Denmark
 Djibouti
 Dominica
-Dominican Republic
-East Timor
+DominicanRepublic
+EastTimor
 Ecuador
 Egypt
-El Salvador
-Equatorial Guinea
+ElSalvador
+EquatorialGuinea
 Eritrea
 Estonia
 Ethiopia
-External Territories of Australia
-Falkland Islands
-Faroe Islands
-Fiji Islands
+ExternalTerritoriesofAustralia
+FalklandIslands
+FaroeIslands
+FijiIslands
 Finland
 France
-French Guiana
-French Polynesia
-French Southern Territories
+FrenchGuiana
+FrenchPolynesia
+FrenchSouthernTerritories
 Gabon
 Gambia The
 Georgia
@@ -88,14 +87,14 @@ Grenada
 Guadeloupe
 Guam
 Guatemala
-Guernsey and Alderney
+GuernseyandAlderney
 Guinea
-Guinea-Bissau
+GuineaBissau
 Guyana
 Haiti
-Heard and McDonald Islands
+HeardandMcDonaldIslands
 Honduras
-Hong Kong S.A.R.
+HongKong
 Hungary
 Iceland
 India
@@ -112,8 +111,8 @@ Jordan
 Kazakhstan
 Kenya
 Kiribati
-Korea North
-Korea South
+KoreaNorth
+KoreaSouth
 Kuwait
 Kyrgyzstan
 Laos
@@ -125,7 +124,7 @@ Libya
 Liechtenstein
 Lithuania
 Luxembourg
-Macau S.A.R.
+Macau
 Macedonia
 Madagascar
 Malawi
@@ -133,8 +132,8 @@ Malaysia
 Maldives
 Mali
 Malta
-Man (Isle of)
-Marshall Islands
+Man
+MarshallIslands
 Martinique
 Mauritania
 Mauritius
@@ -151,43 +150,42 @@ Myanmar
 Namibia
 Nauru
 Nepal
-Netherlands Antilles
-Netherlands The
-New Caledonia
-New Zealand
+Netherlands
+NewCaledonia
+NewZealand
 Nicaragua
 Niger
 Nigeria
 Niue
-Norfolk Island
-Northern Mariana Islands
+NorfolkIsland
+NorthernMarianaIslands
 Norway
 Oman
 Pakistan
 Palau
-Palestinian Territory Occupied
+PalestinianTerritoryOccupied
 Panama
-Papua new Guinea
+PapuanewGuinea
 Paraguay
 Peru
 Philippines
-Pitcairn Island
+PitcairnIsland
 Poland
 Portugal
-Puerto Rico
+PuertoRico
 Qatar
 Reunion
 Romania
 Russia
 Rwanda
-Saint Helena
-Saint Kitts And Nevis
-Saint Lucia
-Saint Pierre and Miquelon
-Saint Vincent And The Grenadines
+SaintHelena
+SaintKittsAndNevis
+SaintLucia
+SaintPierreandMiquelon
+SaintVincentAndTheGrenadines
 Samoa
-San Marino
-Sao Tome and Principe
+SanMarino
+SaoTomeandPrincipe
 Saudi Arabia
 Senegal
 Serbia
@@ -196,17 +194,17 @@ Sierra Leone
 Singapore
 Slovakia
 Slovenia
-Smaller Territories of the UK
-Solomon Islands
+SmallerTerritoriesoftheUK
+SolomonIslands
 Somalia
-South Africa
-South Georgia
-South Sudan
+SouthAfrica
+SouthGeorgia
+SouthSudan
 Spain
-Sri Lanka
+SriLanka
 Sudan
 Suriname
-Svalbard And Jan Mayen Islands
+SvalbardAndJanMayenIslands
 Swaziland
 Sweden
 Switzerland
@@ -218,28 +216,26 @@ Thailand
 Togo
 Tokelau
 Tonga
-Trinidad And Tobago
+TrinidadAndTobago
 Tunisia
 Turkey
 Turkmenistan
-Turks And Caicos Islands
+TurksAndCaicosIslands
 Tuvalu
 Uganda
 Ukraine
-United Arab Emirates
-United Kingdom
-United States
-United States Minor Outlying Islands
+UnitedArabEmirates
+UnitedKingdom
+UnitedStates
 Uruguay
 Uzbekistan
 Vanuatu
-Vatican City State (Holy See)
+VaticanCityState
 Venezuela
 Vietnam
-Virgin Islands (British)
-Virgin Islands (US)
-Wallis And Futuna Islands
-Western Sahara
+VirginIslands
+WallisAndFutunaIslands
+WesternSahara
 Yemen
 Yugoslavia
 Zambia
