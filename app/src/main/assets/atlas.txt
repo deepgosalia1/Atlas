@@ -2895,7 +2895,6 @@ AustAgder
 Austell
 Austin
 Austinn
-Austinn
 Austintown
 Australia
 AustralianCapitalTerritory
@@ -11742,7 +11741,6 @@ EastGrandRapids
 EastGreenbush
 EastGreenwich
 EastGrinstead
-Easthampton
 EastHampton
 EastHanahai
 EastHartford
@@ -11752,7 +11750,6 @@ EastHighlandPark
 EastHillMeridian
 EastHills
 EastKilbride
-Eastlake
 EastLake
 EastLaMirada
 EastLansing
@@ -11769,7 +11766,6 @@ EastOrange
 EastPaloAlto
 EastPeoria
 EastPoint
-Eastpointe
 EastProvidence
 EastRandolph
 EastRentonHighlands

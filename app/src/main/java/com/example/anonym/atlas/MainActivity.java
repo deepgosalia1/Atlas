@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -23,10 +26,9 @@ public class MainActivity extends AppCompatActivity{
 
     private String IncomingPlace,randomselectedplace,placeEntered,final_place_to_be_passed;
     Random random=new Random();
-    ArrayList<String> placelist=new ArrayList<String>();
-    ArrayList<String> temporary=new ArrayList<String>();
-    ArrayList<String> turnlist=new ArrayList<String>();
-    ArrayList<String> caplist=new ArrayList<String>();
+    ArrayList<String> keys = new ArrayList<String>();
+    LinkedHashMap<String,String> all_place = new LinkedHashMap<>(46354);
+    LinkedHashMap<String,String> all_copy = new LinkedHashMap<>(46354);
     TextView comp_place;
     TextView user_place;
     EditText enterplace;
@@ -52,24 +54,22 @@ public class MainActivity extends AppCompatActivity{
         } else {
             placeEntered = enterplace.getText().toString().toLowerCase();
             Character temp = placeEntered.charAt(0);
-            Log.d("place enter index 0 : ", temp.toString());
-            Log.d("place enter index 0 : ", x.toString());
-            Log.d("place enter index 0 : ", String.valueOf(firstuse));
+            Log.d("user-place index 0 : ", temp.toString());
+            Log.d("comp-place index end : ", x.toString());
+            Log.d("firstuse : ", String.valueOf(firstuse));
 
-            if ((turnlist.contains(placeEntered) && firstuse == 1 || (turnlist.contains(placeEntered) && temp == x))) {
-                int index = turnlist.indexOf(placeEntered);
-                String place = caplist.get(index);
+            if ((all_copy.containsKey(placeEntered) && firstuse == 1) || (all_copy.containsKey(placeEntered) && temp == x)){
+                String place = all_copy.get(placeEntered);
                 user_place.setText(place);
                 final_place_to_be_passed = placeEntered;
-                turnlist.remove(placeEntered);
-                caplist.remove(place);
+                all_copy.remove(placeEntered);
+                keys.remove(placeEntered);
                 firstuse=0;
                 computerturn();
-            } else if (!turnlist.contains(placeEntered) || temp != x) {
+            } else if (!all_copy.containsKey(placeEntered) || temp != x) {
                 Toast.makeText(this, "Computer challenged, place invalid or repeated, Hence Computer Wins!", Toast.LENGTH_LONG).show();
                 onStart(null);
             }
-
         }
     }
 
@@ -80,17 +80,17 @@ public class MainActivity extends AppCompatActivity{
         Log.d("input of user : ",user_place.getText().toString());
         if (firstuse==1)
         {
-            int no = random.nextInt(caplist.size())-1;
-            String temp = caplist.get(no);
-            final_place_to_be_passed = temp;
+            int no = random.nextInt(keys.size())-1;
+            String temp = all_copy.get(keys.get(no));
+            final_place_to_be_passed = keys.get(no);
             comp_place.setText(temp);
             Log.d("Output of computer : ",temp);
             enterplace.setText("");
-            turnlist.remove(no);
-            caplist.remove(no);
-            x = temp.charAt(temp.length()-1);
+            x = keys.get(no).charAt(temp.length()-1);
             enterplace.setHint("Enter place from "+x.toString()+"... ");
             firstuse=0;
+            all_copy.remove(keys.get(no));
+            keys.remove(no);
         }
         else
         {
@@ -98,29 +98,29 @@ public class MainActivity extends AppCompatActivity{
             initial = input.charAt(input.length()-1);
             String result;
             int low=0;
-            int high = caplist.size()-1;
+            int high = keys.size()-1;
 
             while(low<=high)
             {
                 int mid=(low+high)/2;
-                String getword = turnlist.get(mid);
-                Log.d("Info: len of getword",String.valueOf(getword.length()));
-                if(mid==turnlist.size())
+                String getword = keys.get(mid);
+                Log.d("Getword = ",String.valueOf(getword));
+                if(mid==keys.size())
                     break;
-                Character test = turnlist.get(mid).toLowerCase().charAt(0);
+                Character test = keys.get(mid).toLowerCase().charAt(0);
                 Log.d("Info:Initial of place",test.toString());
                 if(test==initial)
                 {
-                    result = caplist.get(mid);
-                    final_place_to_be_passed = result;
+                    result = all_copy.get(keys.get(mid));
+                    final_place_to_be_passed = keys.get(mid);
                     comp_place.setText(result);
                     Log.d("Output : ",result);
                     enterplace.setText("");
-                    turnlist.remove(mid);
-                    caplist.remove(mid);
-                    x = result.charAt(result.length()-1);
+                    x = keys.get(mid).charAt(result.length()-1);
                     enterplace.setHint("Enter a place from "+x.toString());
                     flag=1;
+                    all_copy.remove(keys.get(mid));
+                    keys.remove(mid);
                     break;
                 }
                 else if(test < initial) {
@@ -138,8 +138,8 @@ public class MainActivity extends AppCompatActivity{
                 onStart(null);
             }
         }
-        Log.d("Placelist + temp size",String.valueOf(placelist.size()) +"+"+String.valueOf(temporary.size()));
-        Log.d("Caplist + turnlist size",String.valueOf(caplist.size()) +"+"+String.valueOf(turnlist.size()));
+        Log.d("All_Place size : ",String.valueOf(all_place.size()));
+        Log.d("All_Copy size : ",String.valueOf(all_copy.size()));
     }
 
     public boolean onStart(View view) {
@@ -147,8 +147,10 @@ public class MainActivity extends AppCompatActivity{
         user_place.setText("");
         comp_place.setText("");
         firstuse=1;
-        caplist.addAll(placelist);
-        turnlist.addAll(temporary);
+        all_copy.putAll(all_place);
+        for(Map.Entry<String, String> t : all_place.entrySet()) {
+            keys.add(t.getKey());
+        }
         enterplace.setText("");
         enterplace.setHint("Enter a place here");
         if (userTurn) {
@@ -187,8 +189,7 @@ public class MainActivity extends AppCompatActivity{
             String line = null;
             while((line = in.readLine()) != null) {
                 IncomingPlace = line.trim();
-                placelist.add(IncomingPlace);
-                temporary.add(IncomingPlace.toLowerCase());
+                all_place.put(IncomingPlace.toLowerCase(),IncomingPlace);
             }
         } catch (IOException e) {
             Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
