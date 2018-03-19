@@ -3,6 +3,7 @@ package com.example.anonym.atlas;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -33,31 +34,42 @@ public class MainActivity extends AppCompatActivity{
     Character x = '#';
     private boolean userTurn = false;
 
-    public void redirectToMaps(View view){
-        Intent intent1 = new Intent(MainActivity.this,MapsActivity.class);
-        intent1.putExtra("trial",final_place_to_be_passed);
-        startActivity(intent1);
+    public void redirectToMaps(View view) {
+        if (user_place.getText().toString() == "" && comp_place.getText().toString() == "") {
+
+            Toast.makeText(this, "Please enter the place name first, in order to look up on the map", Toast.LENGTH_LONG).show();
+
+        } else {
+            Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
+            intent1.putExtra("trial", final_place_to_be_passed);
+            startActivity(intent1);
+        }
     }
 
-    public void submitplace(View view){
-        placeEntered=enterplace.getText().toString().toLowerCase();
-        Character temp = placeEntered.charAt(0);
-        Log.i("place enter index 0 : ",temp.toString());
-        Log.i("place enter index 0 : ",x.toString());
-        Log.i("place enter index 0 : ",String.valueOf(firstuse));
-        if((turnlist.contains(placeEntered) && firstuse==1 || (turnlist.contains(placeEntered) && temp==x))) {
-            int index = turnlist.indexOf(placeEntered);
-            String place = caplist.get(index);
-            user_place.setText(place);
-            final_place_to_be_passed=placeEntered;
-            turnlist.remove(placeEntered);
-            caplist.remove(place);
-            computerturn();
-        }
-        else if(!turnlist.contains(placeEntered) || temp!=x){
-            Toast.makeText(this,"Computer challenged, place invalid or repeated",Toast.LENGTH_SHORT).show();
-            Toast.makeText(this,"Computer Wins !!",Toast.LENGTH_SHORT).show();
-            onStart(null);
+    public void submitplace(View view) {
+        if (enterplace.getText().toString() == "") {
+            Toast.makeText(this, "Please enter a name of the place first.", Toast.LENGTH_LONG).show();
+        } else {
+            placeEntered = enterplace.getText().toString().toLowerCase();
+            Character temp = placeEntered.charAt(0);
+            Log.d("place enter index 0 : ", temp.toString());
+            Log.d("place enter index 0 : ", x.toString());
+            Log.d("place enter index 0 : ", String.valueOf(firstuse));
+
+            if ((turnlist.contains(placeEntered) && firstuse == 1 || (turnlist.contains(placeEntered) && temp == x))) {
+                int index = turnlist.indexOf(placeEntered);
+                String place = caplist.get(index);
+                user_place.setText(place);
+                final_place_to_be_passed = placeEntered;
+                turnlist.remove(placeEntered);
+                caplist.remove(place);
+                firstuse=0;
+                computerturn();
+            } else if (!turnlist.contains(placeEntered) || temp != x) {
+                Toast.makeText(this, "Computer challenged, place invalid or repeated, Hence Computer Wins!", Toast.LENGTH_LONG).show();
+                onStart(null);
+            }
+
         }
     }
 
@@ -65,18 +77,18 @@ public class MainActivity extends AppCompatActivity{
         int flag=0;
         Character initial=null;
         String input;
-        Log.i("input:",user_place.getText().toString());
+        Log.d("input of user : ",user_place.getText().toString());
         if (firstuse==1)
         {
             int no = random.nextInt(caplist.size())-1;
             String temp = caplist.get(no);
             comp_place.setText(temp);
-            Log.i("Output : ",temp);
+            Log.d("Output of computer : ",temp);
             enterplace.setText("");
             turnlist.remove(no);
             caplist.remove(no);
             x = temp.charAt(temp.length()-1);
-            enterplace.setHint("Enter a place from "+x.toString());
+            enterplace.setHint("Enter place from "+x.toString()+"... ");
             firstuse=0;
         }
         else
@@ -91,16 +103,17 @@ public class MainActivity extends AppCompatActivity{
             {
                 int mid=(low+high)/2;
                 String getword = turnlist.get(mid);
-                Log.i("Info: len of getword",String.valueOf(getword.length()));
+                Log.d("Info: len of getword",String.valueOf(getword.length()));
                 if(mid==turnlist.size())
                     break;
                 Character test = turnlist.get(mid).toLowerCase().charAt(0);
-                Log.i("Info:Initial of place",test.toString());
+                Log.d("Info:Initial of place",test.toString());
                 if(test==initial)
                 {
                     result = caplist.get(mid);
+                    final_place_to_be_passed = result;
                     comp_place.setText(result);
-                    Log.i("Output : ",result);
+                    Log.d("Output : ",result);
                     enterplace.setText("");
                     turnlist.remove(mid);
                     caplist.remove(mid);
@@ -111,22 +124,21 @@ public class MainActivity extends AppCompatActivity{
                 }
                 else if(test < initial) {
                     low = mid + 1;
-                    Log.i("Info: low val ", String.valueOf(low));
+                    Log.d("Info: low val ", String.valueOf(low));
                 }
                 else {
                     high = mid - 1;
-                    Log.i("Info: high val ", String.valueOf(high));
+                    Log.d("Info: high val ", String.valueOf(high));
                 }
             }
             if(flag==0){
                 String print = String.valueOf(initial);
-                Toast.makeText(this,"Computer couldn't find any place from"+print.toUpperCase(),Toast.LENGTH_SHORT).show();
-                Toast.makeText(this,"You Win !!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Computer couldn't find any place from"+print.toUpperCase()+"You win!!",Toast.LENGTH_LONG).show();
                 onStart(null);
             }
         }
-        Log.i("Placelist + temp size",String.valueOf(placelist.size()) +"+"+String.valueOf(temporary.size()));
-        Log.i("Caplist + turnlist size",String.valueOf(caplist.size()) +"+"+String.valueOf(turnlist.size()));
+        Log.d("Placelist + temp size",String.valueOf(placelist.size()) +"+"+String.valueOf(temporary.size()));
+        Log.d("Caplist + turnlist size",String.valueOf(caplist.size()) +"+"+String.valueOf(turnlist.size()));
     }
 
     public boolean onStart(View view) {
@@ -139,10 +151,21 @@ public class MainActivity extends AppCompatActivity{
         enterplace.setText("");
         enterplace.setHint("Enter a place here");
         if (userTurn) {
-            Toast.makeText(this,"User Turn",Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    Toast.makeText(MainActivity.this, "User Turn",Toast.LENGTH_SHORT).show();
+                }
+            }, 2000);
         } else {
-            Toast.makeText(this,"Computer Turn",Toast.LENGTH_SHORT).show();
-            computerturn();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    Toast.makeText(MainActivity.this, "Computer Turn",Toast.LENGTH_SHORT).show();
+                }
+            }, 2000);
         }
         return true;
     }
@@ -166,7 +189,7 @@ public class MainActivity extends AppCompatActivity{
                 temporary.add(IncomingPlace.toLowerCase());
             }
         } catch (IOException e) {
-            Toast.makeText(this, "Could not load the Places Directory.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
         }
         onStart(null);
     }
