@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity{
         {
             int no = random.nextInt(caplist.size())-1;
             String temp = caplist.get(no);
+            final_place_to_be_passed = temp;
             comp_place.setText(temp);
             Log.d("Output of computer : ",temp);
             enterplace.setText("");
@@ -166,6 +167,7 @@ public class MainActivity extends AppCompatActivity{
                     Toast.makeText(MainActivity.this, "Computer Turn",Toast.LENGTH_SHORT).show();
                 }
             }, 2000);
+            computerturn();
         }
         return true;
     }
