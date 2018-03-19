@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity{
     int firstuse=0;
     Character x = '#';
     private boolean userTurn = false;
+    InputStream inputStream;
+    BufferedReader in;
 
     public void redirectToMaps(View view) {
         if (user_place.getText().toString() == "" && comp_place.getText().toString() == "") {
@@ -183,16 +185,19 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        String mode = intent.getStringExtra("mode");
+        int mode = intent.getIntExtra("mode",0);
         comp_place = (TextView) findViewById(R.id.comp_place);
         user_place = (TextView) findViewById(R.id.user_place);
         turn_indicator = (TextView) findViewById(R.id.turn_indicator);
         enterplace = findViewById(R.id.enterplace);
         AssetManager assetManager = getAssets();
-        if (mode == "hard") {
             try {
-                InputStream inputStream = assetManager.open("atlas.txt");
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+                if (mode==1)
+                    inputStream = assetManager.open("atlas.txt");
+                else
+                    inputStream = assetManager.open("just_countries.txt");
+
+                in = new BufferedReader(new InputStreamReader(inputStream));
                 String line = null;
                 while ((line = in.readLine()) != null) {
                     IncomingPlace = line.trim();
@@ -202,20 +207,7 @@ public class MainActivity extends AppCompatActivity{
                 Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
             }
             onStart(null);
-        }else{
-            try {
-                InputStream inputStream = assetManager.open("just_countries.txt");
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-                String line = null;
-                while ((line = in.readLine()) != null) {
-                    IncomingPlace = line.trim();
-                    all_place.put(IncomingPlace.toLowerCase(), IncomingPlace);
-                }
-            } catch (IOException e) {
-                Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
             }
-            onStart(null);
         }
-    }
-}
+
 
