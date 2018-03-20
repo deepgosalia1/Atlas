@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity{
     int firstuse=0;
     Character x = '#';
     private boolean userTurn = false;
+    InputStream inputStream;
+    BufferedReader in;
 
     public void redirectToMaps(View view) {
         if (user_place.getText().toString() == "" && comp_place.getText().toString() == "") {
@@ -191,6 +193,7 @@ public class MainActivity extends AppCompatActivity{
         enterplace = findViewById(R.id.enterplace);
         Log.i("Mode : ",String.valueOf(mode));
         AssetManager assetManager = getAssets();
+<<<<<<< HEAD
         try {
             if (mode == 1)
                 inputStream = assetManager.open("atlas.txt");
@@ -208,5 +211,26 @@ public class MainActivity extends AppCompatActivity{
         onStart(null);
     }
 }
+=======
+            try {
+                if (mode==1)
+                    inputStream = assetManager.open("atlas.txt");
+                else
+                    inputStream = assetManager.open("just_countries.txt");
+
+                in = new BufferedReader(new InputStreamReader(inputStream));
+                String line = null;
+                while ((line = in.readLine()) != null) {
+                    IncomingPlace = line.trim();
+                    all_place.put(IncomingPlace.toLowerCase(), IncomingPlace);
+                }
+            } catch (IOException e) {
+                Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
+            }
+            onStart(null);
+            }
+        }
+
+>>>>>>> f1d4586b80b30baeb67a2bdfc699c2b8391d1be4
 
 
