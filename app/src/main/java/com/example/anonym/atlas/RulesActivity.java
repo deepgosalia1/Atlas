@@ -31,6 +31,14 @@ public class RulesActivity extends AppCompatActivity {
         intent.putExtra("mode",1);
         startActivity(intent);
     }
+    public void response_multiplayer(View view){
+        Toast.makeText(this, "Multiplayer mode selected", Toast.LENGTH_SHORT).show();
+        Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+        hardimage.startAnimation(animFadein);
+        Intent intent=new Intent(RulesActivity.this,MultiplayerActivity.class);
+        intent.putExtra("mode",2);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
