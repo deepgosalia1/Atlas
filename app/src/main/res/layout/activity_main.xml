@@ -25,11 +25,11 @@
         android:id="@+id/enterplace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/submit"
-        android:layout_toEndOf="@+id/user"
-        android:ems="10"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="110dp"
+        android:layout_marginBottom="100dp"
         android:hint="Enter a place here..."
-        android:inputType="textPersonName"
+        android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:textStyle="bold" />
 

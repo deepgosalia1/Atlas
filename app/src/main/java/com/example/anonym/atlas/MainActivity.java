@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -50,9 +51,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void submitplace(View view) {
-        if (enterplace.getText().toString() == "") {
+
+        if (TextUtils.isEmpty(enterplace.getText().toString())) {
+            Log.i("EnterPlace =",enterplace.getText().toString());
             Toast.makeText(this, "Please enter a name of the place first.", Toast.LENGTH_LONG).show();
-        } else {
+        }
+        else{
             placeEntered = enterplace.getText().toString().toLowerCase();
             Character temp = placeEntered.charAt(0);
             Log.d("user-place index 0 : ", temp.toString());
@@ -195,7 +199,7 @@ public class MainActivity extends AppCompatActivity{
         comp_place = (TextView) findViewById(R.id.comp_place);
         user_place = (TextView) findViewById(R.id.user_place);
         turn_indicator = (TextView) findViewById(R.id.turn_indicator);
-        enterplace = findViewById(R.id.enterplace);
+        enterplace = (EditText)findViewById(R.id.enterplace);
         Log.i("Mode : ",String.valueOf(mode));
         AssetManager assetManager = getAssets();
         try {
