@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity{
 
     private String IncomingPlace,placeEntered,final_place_to_be_passed;
     Random random=new Random();
-    BufferedReader in;
-    InputStream inputStream;
     ArrayList<String> keys = new ArrayList<String>();
     LinkedHashMap<String,String> all_place = new LinkedHashMap<>(46354);
     LinkedHashMap<String,String> all_copy = new LinkedHashMap<>(46354);
@@ -77,7 +75,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void computerturn(){
-        turn_indicator.setText("Computer's turn! and now your's");
         int flag=0;
         Character initial=null;
         String input;
@@ -98,6 +95,7 @@ public class MainActivity extends AppCompatActivity{
         }
         else
         {
+            turn_indicator.setText("Computer Played!");
             input = user_place.getText().toString().toLowerCase();
             initial = input.charAt(input.length()-1);
             String result;
@@ -142,6 +140,13 @@ public class MainActivity extends AppCompatActivity{
                 onStart(null);
             }
         }
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                turn_indicator.setText("Your Turn !");
+            }
+        }, 1000);
         Log.d("All_Place size : ",String.valueOf(all_place.size()));
         Log.d("All_Copy size : ",String.valueOf(all_copy.size()));
     }
@@ -167,7 +172,7 @@ public class MainActivity extends AppCompatActivity{
                 }
             }, 2000);
         } else {
-            turn_indicator.setText("Computer's turn! and now your's");
+            turn_indicator.setText("Computer played first!");
             new Handler().postDelayed(new Runnable() {
 
                 @Override
@@ -193,7 +198,6 @@ public class MainActivity extends AppCompatActivity{
         enterplace = findViewById(R.id.enterplace);
         Log.i("Mode : ",String.valueOf(mode));
         AssetManager assetManager = getAssets();
-<<<<<<< HEAD
         try {
             if (mode == 1)
                 inputStream = assetManager.open("atlas.txt");
@@ -211,26 +215,5 @@ public class MainActivity extends AppCompatActivity{
         onStart(null);
     }
 }
-=======
-            try {
-                if (mode==1)
-                    inputStream = assetManager.open("atlas.txt");
-                else
-                    inputStream = assetManager.open("just_countries.txt");
-
-                in = new BufferedReader(new InputStreamReader(inputStream));
-                String line = null;
-                while ((line = in.readLine()) != null) {
-                    IncomingPlace = line.trim();
-                    all_place.put(IncomingPlace.toLowerCase(), IncomingPlace);
-                }
-            } catch (IOException e) {
-                Toast.makeText(this, "Could not load the 'Places' Directory.", Toast.LENGTH_LONG).show();
-            }
-            onStart(null);
-            }
-        }
-
->>>>>>> f1d4586b80b30baeb67a2bdfc699c2b8391d1be4
 
 

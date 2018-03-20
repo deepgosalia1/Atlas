@@ -9,44 +9,45 @@
 
     <ImageView
         android:id="@+id/rules_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/hard_image"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="383dp"
         app:srcCompat="@drawable/rules" />
 
     <ImageView
         android:id="@+id/hard_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/rules_image"
-        android:layout_marginStart="30dp"
+        android:layout_marginBottom="33dp"
+        android:layout_marginStart="55dp"
         android:clickable="true"
+        android:contentDescription="hard_mode"
         android:onClick="response_hard"
-        app:srcCompat="@drawable/hard_final"/>
+        app:srcCompat="@drawable/hard_final" />
 
     <ImageView
         android:id="@+id/easy_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/rules_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/hard_image"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="53dp"
         android:clickable="true"
+        android:contentDescription="easy_mode"
         android:onClick="response_easy"
-        app:srcCompat="@drawable/easy_final"/>
+        app:srcCompat="@drawable/easy_final" />
 
     <TextView
         android:id="@+id/rules_list"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="176dp"
         android:fontFamily="serif-monospace"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
 
 </RelativeLayout>
