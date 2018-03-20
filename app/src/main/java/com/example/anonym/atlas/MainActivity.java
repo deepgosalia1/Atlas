@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = getIntent();
         int mode = intent.getIntExtra("mode",0);
         comp_place = (TextView) findViewById(R.id.comp_place);
-        user_place = (TextView) findViewById(R.id.user_place);
+        user_place = (TextView) findViewById(R.id.player2_place);
         turn_indicator = (TextView) findViewById(R.id.turn_indicator);
         enterplace = (EditText)findViewById(R.id.enterplace);
         Log.i("Mode : ",String.valueOf(mode));

@@ -1,52 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_main_t"
-    android:orientation="vertical">
+    tools:context="com.example.anonym.atlas.MultiplayerActivity">
+
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/submit1"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@+id/button2"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="21dp"
         android:background="@color/common_google_signin_btn_text_light_pressed"
         android:fontFamily="monospace"
-        android:onClick="submitplace"
-        android:text="submit"
+        android:onClick="submit2"
+        android:text="submit for player 2"
         android:textSize="22sp" />
 
     <EditText
-        android:id="@+id/enterplace"
+        android:id="@+id/player2_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="110dp"
-        android:layout_marginBottom="100dp"
-=======
-        android:layout_above="@+id/submit"
-        android:layout_toEndOf="@+id/player2"
-        android:ems="10"
->>>>>>> 3f0c7fc3a3deb6d1e27e65c244fdd7d807efb2fd
-        android:hint="Enter a place here..."
+        android:layout_above="@+id/submit1"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:imeOptions="actionGo"
+        android:inputType="textPersonName"
         android:textAlignment="center"
-        android:textStyle="bold"
-        android:imeOptions="actionGo" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/player2_place"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="330dp"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignEnd="@+id/player2_edittext"
         android:background="@color/common_google_signin_btn_text_light_focused"
         android:padding="10dp"
         android:textStyle="bold" />
@@ -55,12 +49,11 @@
         android:id="@+id/player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="330dp"
+        android:layout_alignBottom="@+id/player2_place"
+        android:layout_toStartOf="@+id/player2_edittext"
         android:background="@color/colorPrimary"
         android:padding="5dp"
-        android:text="You"
+        android:text="Player 2"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
@@ -69,42 +62,41 @@
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="205dp"
+        android:layout_alignTop="@+id/player1_place"
+        android:layout_toEndOf="@+id/player2_edittext"
         android:background="@drawable/trying"
         android:fontFamily="monospace"
-        android:onClick="redirectToMaps"
+        android:onClick="player1map"
         android:padding="2dp"
         android:textAlignment="center"
         android:textColor="?attr/colorAccent"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/computer"
+        android:id="@+id/player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="210dp"
+        android:layout_alignStart="@+id/turnindicator"
+        android:layout_below="@+id/turnindicator"
+        android:layout_marginTop="38dp"
         android:background="@color/colorPrimary"
         android:padding="5dp"
-        android:text="Computer"
+        android:text="Player 1"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/comp_place"
+        android:id="@+id/player1_place"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="210dp"
+        android:layout_alignBaseline="@+id/player1"
+        android:layout_alignBottom="@+id/player1"
+        android:layout_centerHorizontal="true"
         android:background="@color/common_google_signin_btn_text_light_focused"
         android:padding="10dp" />
 
     <TextView
-        android:id="@+id/turn_indicator"
+        android:id="@+id/turnindicator"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -117,4 +109,41 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/player1_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/player2_place"
+        android:layout_below="@+id/get_map"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/player1_edittext"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@+id/player1_edittext"
+        android:layout_centerInParent="false"
+        android:layout_marginTop="20dp"
+        android:background="@color/common_google_signin_btn_text_light_pressed"
+        android:fontFamily="monospace"
+        android:onClick="submit1"
+        android:text="submit for player 1"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/player2_edittext"
+        android:layout_alignEnd="@+id/turnindicator"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/trying"
+        android:onClick="player2map" />
+
+
 </RelativeLayout>

@@ -20,8 +20,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="33dp"
-        android:layout_marginStart="55dp"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="15dp"
+        android:layout_toStartOf="@+id/multiplayer_image"
         android:clickable="true"
         android:contentDescription="hard_mode"
         android:onClick="response_hard"
@@ -33,7 +34,7 @@
         android:layout_height="100dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/hard_image"
-        android:layout_marginEnd="53dp"
+        android:layout_marginEnd="12dp"
         android:clickable="true"
         android:contentDescription="easy_mode"
         android:onClick="response_easy"
@@ -49,5 +50,16 @@
         android:fontFamily="serif-monospace"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/multiplayer_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/easy_image"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/easy_image"
+        android:clickable="true"
+        android:onClick="response_multiplayer"
+        app:srcCompat="@drawable/multiplayer" />
 
 </RelativeLayout>
