@@ -61,7 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText(this, "Latitude is " + lat + " Longitude is " + lng, Toast.LENGTH_LONG).show();
             // Add a marker in the place recieved and move the camera
             LatLng placelocated = new LatLng(lat, lng);
-            mMap.addMarker(new MarkerOptions().position(placelocated).title("Here is that place " + placerecieved));
+            mMap.addMarker(new MarkerOptions().position(placelocated).title("Here's the place : " + placerecieved));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(placelocated,8));
         } else {
             Toast.makeText(this, "No such place exist.", Toast.LENGTH_SHORT).show();

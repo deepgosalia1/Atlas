@@ -13,7 +13,7 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="365dp"
         android:background="@color/common_google_signin_btn_text_light_pressed"
         android:fontFamily="monospace"
         android:onClick="submitplace"
@@ -25,8 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:layout_marginLeft="110dp" />
+        android:ems="10" />
 
 
     <TextView
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="300dp"
         android:background="@color/common_google_signin_btn_text_light_focused"
         android:padding="10dp"
         android:textStyle="bold" />
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="300dp"
         android:background="@color/colorPrimary"
         android:padding="5dp"
         android:text="You"
@@ -60,7 +61,7 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="310dp"
-        android:layout_marginTop="205dp"
+        android:layout_marginTop="195dp"
         android:background="@drawable/trying"
         android:fontFamily="monospace"
         android:onClick="redirectToMaps"
@@ -75,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="200dp"
         android:background="@color/colorPrimary"
         android:padding="5dp"
         android:text="Computer"
@@ -88,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="200dp"
         android:background="@color/common_google_signin_btn_text_light_focused"
         android:padding="10dp" />
 

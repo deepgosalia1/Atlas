@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,9 +31,9 @@ public class MultiplayerActivity extends AppCompatActivity {
     ArrayList<String> keys = new ArrayList<String>();
     LinkedHashMap<String,String> all_place = new LinkedHashMap<>(46354);
     LinkedHashMap<String,String> all_copy = new LinkedHashMap<>(46354);
+    Button player1_submit,player2_submit;
     TextView player1_place,player2_place,turnindicator;
-    EditText player1_edit;
-    EditText player2_edit;
+    EditText player1_edit,player2_edit;
     boolean player1turn=false;
     int firstuse=0;
     Character x = '#';
@@ -61,6 +62,10 @@ public class MultiplayerActivity extends AppCompatActivity {
                 player1_edit.setText("");
                 player2_edit.setHint("Enter place from '" + x.toString() + "'");
                 turnindicator.setText("Player 2's turn");
+                player1_submit.setEnabled(false);
+                player1_edit.setEnabled(false);
+                player2_submit.setEnabled(true);
+                player2_edit.setEnabled(true);
             }
             else if (!all_copy.containsKey(placeEntered) || temp != x) {
                 Toast.makeText(this, "Place invalid or repeated, Player 2 Wins!", Toast.LENGTH_LONG).show();
@@ -88,6 +93,10 @@ public class MultiplayerActivity extends AppCompatActivity {
                 player1_edit.setHint("Enter place from '" + x.toString()+"'");
                 player2_edit.setText("");
                 turnindicator.setText("Player 1's turn");
+                player1_submit.setEnabled(true);
+                player1_edit.setEnabled(true);
+                player2_submit.setEnabled(false);
+                player2_edit.setEnabled(false);
             }
             else if (!all_copy.containsKey(placeEntered) || temp != x) {
                 Toast.makeText(this, "Place invalid or repeated, Hence Player 1 Wins!", Toast.LENGTH_LONG).show();
@@ -136,7 +145,9 @@ public class MultiplayerActivity extends AppCompatActivity {
                     Toast.makeText(MultiplayerActivity.this, "Player 1's turn",Toast.LENGTH_SHORT).show();
                 }
             }, 2000);
-            player1_edit.setHint("player 1 enter a random place..");
+            player1_edit.setHint("Enter a random place");
+            player2_submit.setEnabled(false);
+            player2_edit.setEnabled(false);
         } else {
             turnindicator.setText("Player 2's turn");
             new Handler().postDelayed(new Runnable() {
@@ -146,7 +157,9 @@ public class MultiplayerActivity extends AppCompatActivity {
                     Toast.makeText(MultiplayerActivity.this, "Player 2's Turn",Toast.LENGTH_SHORT).show();
                 }
             }, 2000);
-            player2_edit.setHint("player 2 enter a random place..");
+            player2_edit.setHint("Enter a random place");
+            player1_submit.setEnabled(false);
+            player1_edit.setEnabled(false);
         }
         return true;
     }
@@ -163,6 +176,8 @@ public class MultiplayerActivity extends AppCompatActivity {
         turnindicator=(TextView)findViewById(R.id.turnindicator);
         player1_edit=(EditText)findViewById(R.id.player1_edittext);
         player2_edit=(EditText)findViewById(R.id.player2_edittext);
+        player1_submit=(Button)findViewById(R.id.player1_submit);
+        player2_submit=(Button)findViewById(R.id.player2_submit);
         Log.i("Edit text : ",player2_edit.getHint().toString());
         AssetManager assetManager = getAssets();
         try{
