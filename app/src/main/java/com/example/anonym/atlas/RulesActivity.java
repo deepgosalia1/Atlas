@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RulesActivity extends AppCompatActivity {
-    ImageView hardimage,easyimage;
+    ImageView hardimage,easyimage,multiplayerimage;
     TextView rules_list;
 
     public void response_easy(View view){
@@ -34,7 +34,7 @@ public class RulesActivity extends AppCompatActivity {
     public void response_multiplayer(View view){
         Toast.makeText(this, "Multiplayer mode selected", Toast.LENGTH_SHORT).show();
         Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
-        hardimage.startAnimation(animFadein);
+        multiplayerimage.startAnimation(animFadein);
         Intent intent=new Intent(RulesActivity.this,MultiplayerActivity.class);
         intent.putExtra("mode",2);
         startActivity(intent);
@@ -47,6 +47,7 @@ public class RulesActivity extends AppCompatActivity {
         Intent intent=getIntent();
         hardimage=(ImageView)findViewById(R.id.hard_image);
         easyimage=(ImageView)findViewById(R.id.easy_image);
+        multiplayerimage=(ImageView)findViewById(R.id.multiplayer_image);
         rules_list=(TextView)findViewById(R.id.rules_list);
         rules_list.setText(Html.fromHtml(getString(R.string.names)));
 

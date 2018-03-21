@@ -40,7 +40,7 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     //button methods
     public void submit1(View view) {
-        player1_edit.setHint("\t");
+        player1_edit.setHint("");
         if (TextUtils.isEmpty(player1_edit.getText().toString())) {
             Toast.makeText(this, "Please enter a name of the place first.", Toast.LENGTH_LONG).show();
         }
@@ -59,7 +59,7 @@ public class MultiplayerActivity extends AppCompatActivity {
                 x = placeEntered.charAt(placeEntered.length() - 1);
                 firstuse = 0;
                 player1_edit.setText("");
-                player2_edit.setHint("Enter place from " + x.toString() + "... ");
+                player2_edit.setHint("Enter place from '" + x.toString() + "'");
                 turnindicator.setText("Player 2's turn");
             }
             else if (!all_copy.containsKey(placeEntered) || temp != x) {
@@ -79,13 +79,13 @@ public class MultiplayerActivity extends AppCompatActivity {
             Character temp = placeEntered.charAt(0);
             if ((all_copy.containsKey(placeEntered) && firstuse == 1) || (all_copy.containsKey(placeEntered) && temp == x)) {
                 String place = all_copy.get(placeEntered);
-                player1_place.setText(place);
+                player2_place.setText(place);
                 place_to_be_passed2 = placeEntered;
                 all_copy.remove(placeEntered);
                 keys.remove(placeEntered);
                 x = placeEntered.charAt(placeEntered.length() - 1);
                 firstuse = 0;
-                player1_edit.setHint("Enter place from " + x.toString() + "... ");
+                player1_edit.setHint("Enter place from '" + x.toString()+"'");
                 player2_edit.setText("");
                 turnindicator.setText("Player 1's turn");
             }
@@ -116,10 +116,12 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     public boolean onStart(View view) {
         player1turn = random.nextBoolean();
+        player1_place.setText("");
+        player2_place.setText("");
+        player1_edit.setHint("");
+        player2_edit.setHint("");
         player1_edit.setText("");
         player2_edit.setText("");
-        player1_edit.setHint("\t");
-        player2_edit.setHint("\t");
         firstuse=1;
         all_copy.putAll(all_place);
         for(Map.Entry<String, String> t : all_place.entrySet()) {
@@ -153,10 +155,10 @@ public class MultiplayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_multiplayer);
         Intent intent = getIntent();
         intent.getIntExtra("mode",2);
-        player2_place=(TextView)findViewById(R.id.player1_place);
+        player1_place=(TextView)findViewById(R.id.player1_place);
         player2_place=(TextView)findViewById(R.id.player2_place);
         turnindicator=(TextView)findViewById(R.id.turnindicator);
         player1_edit=(EditText)findViewById(R.id.player1_edittext);
