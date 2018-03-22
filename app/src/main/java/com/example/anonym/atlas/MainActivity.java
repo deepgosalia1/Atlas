@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity{
     TextView comp_place,turn_indicator;
     TextView user_place;
     EditText enterplace;
-    int firstuse=0;
+    int firstuse=0,correctuserturn=0;
     Character x = '#';
     private boolean userTurn = false;
     InputStream inputStream;
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity{
                 all_copy.remove(placeEntered);
                 keys.remove(placeEntered);
                 firstuse=0;
+                correctuserturn++;
                 computerturn();
             } else if (!all_copy.containsKey(placeEntered) || temp != x) {
                 Toast.makeText(this, "Computer challenged, place invalid or repeated, Hence Computer Wins!", Toast.LENGTH_LONG).show();
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity{
             int low=0;
             int high = keys.size()-1;
 
-            while(low<=high)
+            while((low<=high)&&(correctuserturn<11))
             {
                 int mid=(low+high)/2;
                 String getword = keys.get(mid);
@@ -138,11 +139,10 @@ public class MainActivity extends AppCompatActivity{
                     Log.d("Info: high val ", String.valueOf(high));
                 }
             }
-            if(flag==0){
-                String print = String.valueOf(initial);
-                Toast.makeText(this,"Computer couldn't find any place from"+print.toUpperCase()+"You win!!",Toast.LENGTH_LONG).show();
-                onStart(null);
-            }
+            if (correctuserturn>=11 || flag==0){
+            Toast.makeText(this,"Congrats You completed 10 turns! You win!",Toast.LENGTH_LONG).show();
+            onStart(null);
+        }
         }
         new Handler().postDelayed(new Runnable() {
 
@@ -160,6 +160,7 @@ public class MainActivity extends AppCompatActivity{
         user_place.setText("");
         comp_place.setText("");
         firstuse=1;
+        correctuserturn=0;
         all_copy.putAll(all_place);
         for(Map.Entry<String, String> t : all_place.entrySet()) {
             keys.add(t.getKey());
