@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/submit"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -51,6 +51,7 @@
         android:background="@color/colorPrimary"
         android:padding="5dp"
         android:text="You"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
@@ -60,7 +61,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="310dp"
+        android:layout_marginLeft="340dp"
         android:layout_marginTop="195dp"
         android:background="@drawable/trying"
         android:fontFamily="monospace"
@@ -80,6 +81,7 @@
         android:background="@color/colorPrimary"
         android:padding="5dp"
         android:text="Computer"
+        android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="18sp" />
 
@@ -88,7 +90,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="200dp"
         android:background="@color/common_google_signin_btn_text_light_focused"
         android:padding="10dp" />
